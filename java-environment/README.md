@@ -1,5 +1,9 @@
 JAVA_HOME<br>
 PATH<br>
-%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;<br>
+```xml
+%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
+```
 CLASSPATH<br>
+```xml
 .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar
+```

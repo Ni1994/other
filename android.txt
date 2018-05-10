@@ -1,0 +1,45 @@
+MI5:
+  提取boot.img:
+    adb shell
+    su
+    cat /dev/block/bootdevice/by-name/boot  > /sdcard/boot.img
+  下拉文件及框架：
+    adb devices
+    adb root
+    adb pull /system/app/miui/miui.apk /Users/li/apktool
+    adb pull /system/framework/framework-res.apk /Users/li/apktool
+    adb pull /system/framework/framework-ext-res/framework-ext-res.apk /Users/li/apktool
+    adb pull /system/priv-app/MiuiSystemUI/MiuiSystemUI.apk /Users/li/apktool
+  推送文件：
+    adb root
+    adb remount /system
+    adb push NotoSansCJK-Regular.ttc /system
+    adb push Miui-Regular.ttf /system
+    adb push Lock.ogg /system
+    adb push Unlock.ogg /system
+    adb push framework-res.apk /system
+    adb push MiuiSystemUI.apk /system
+    adb push icons /system
+    adb push com.miui.home /system
+    adb push com.android.systemui /system
+  加权限移动：
+    adb shell
+    chmod 0644 Lock.ogg
+    chmod 0644 com.android.systemui
+    chmod 0644 framework-res.apk
+    chmod 0644 MiuiSystemUI.apk
+    chmod 0644 Miui-Regular.ttf
+    chmod 0644 com.miui.home
+    chmod 0644 icons
+    chmod 0644 NotoSansCJK-Regular.ttc
+    chmod 0644 Unlock.ogg
+
+    mv /system/Lock.ogg /system/media/audio/ui
+    mv /system/Unlock.ogg /system/media/audio/ui
+    mv /system/framework-res.apk /system/framework
+    mv /system/MiuiSystemUI.apk /system/priv-app/MiuiSystemUI
+    mv /system/NotoSansCJK-Regular.ttc /system/fonts
+    mv /system/Miui-Regular.ttf /system/fonts
+    mv /system/com.android.systemui /system/media/theme/default
+    mv /system/icons /system/media/theme/default
+    mv /system/com.miui.home /system/media/theme/default
